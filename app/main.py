@@ -24,10 +24,14 @@ def main():
     if args.show_audio_devices:
         SpeechBox.show_audio_devices()
     else:
-        # sb = SpeechBox("input.wav", "output.wav")
+        current_path = os.path.dirname(os.path.abspath(__file__))
+        import audio_agent as ag
+        ag.play(current_path+"/audio/start.wav")
+        
+        sb = SpeechBox("input.wav", "output.wav")
         while True:
             # sb.run()
-            SpeechBox("input.wav", "output.wav").run()
+            sb.run()
             # time.sleep(0.1)
 
 

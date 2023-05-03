@@ -3,6 +3,7 @@ import pyaudio
 import pvporcupine
 import numpy as np
 import scipy.signal as signal
+import os
 import math
 from threading import Thread
 from pvrecorder import PvRecorder
@@ -13,6 +14,8 @@ import pyttsx3_agent as PAgent
 
 ACCESS_KEY = '2y5T87KZaY0yWS+8OJFnlFyMttTCX027dQ7dKCxnKclB2nx4Cvbf4A=='
 KEYWORD = 'computer'
+
+current_path = os.path.dirname(os.path.abspath(__file__))
 
 # 设置采样率为 44100 16000
 sample_rate = 44100
@@ -79,6 +82,7 @@ class SpeechBox(Thread):
                     self._audio_stream.stop_stream()
                     self._audio_stream.close()
 
+                    AAgent.play(current_path+"/audio/hi.wav")
                     self.ask()
                     break
         except Exception as e:
